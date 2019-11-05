@@ -8,10 +8,10 @@ class Fibonacci:
     def __init__(self, n):
         self.n = n
 
-    def compute(self, n, m) -> int:
+    def _compute(self, n) -> int:
         if n <= 1:
             return n
-        return self.compute(n - 1) + self.compute(n - 2)
+        return self._compute(n - 1) + self._compute(n - 2)
 
     @lru_cache(100)
     def get_sequence(self) -> list:
@@ -19,4 +19,4 @@ class Fibonacci:
         # TODO: add maximum number validation
         # TODO: save last computation
 
-        return [self.compute(i) for i in range(self.n)]
+        return [self._compute(i) for i in range(self.n)]
