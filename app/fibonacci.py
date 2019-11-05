@@ -9,7 +9,12 @@ def compute(n) -> int:
     return compute(n - 1) + compute(n - 2)
 
 
-@lru_cache(100)
+def compute_next(diff, sequence) -> int:
+    for index in range(diff):
+        sequence.append(results[-1] + results[-2])
+    return sequence
+
+
 def fibonacci(n) -> int:
     # TODO: raise negative numbers exceptions
     # TODO: add maximum number validation
@@ -24,7 +29,8 @@ def fibonacci(n) -> int:
         return results[n - 1]
 
     if n > len(results):
-        results = results + [compute(i) for i in range(len(results), n)]
+        diff = n - len(results)
+        results = results + compute_next(diff, results)
         return results[-1]
 
     return results[-1]
