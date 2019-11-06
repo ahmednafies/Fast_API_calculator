@@ -9,3 +9,8 @@ class NegativeNumbersNotAllowed(Error):
 
     pass
 
+
+class NumberExceedsTheMaximumLimit(Error):
+    """Raised when a number exceeds max allowed limit"""
+
+    pass
