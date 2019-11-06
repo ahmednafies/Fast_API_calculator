@@ -3,38 +3,41 @@ from functools import lru_cache
 results = []
 
 
-def compute_first(n):
-    num = 1
-    while n >= 1:
-        num = num * n
-        n = n - 1
-        results.append(num)
-
-
-def accumulate(n):
-    num = results[-1]
-    last_index = results.index(results[-1])
-    while last_index < n:
-        num = num * n
-        n = n + 1
-        results.append(num)
-
-
-# @lru_cache(100)
-def factorial(n):
-    # TODO: raise negative numbers exceptions
-    # TODO: add maximum number validation
-    # TODO: Save last computation
-    if n < 1:
+def compute(num):
+    fact = 1
+    if num < 0:
         return 1
+    elif num == 0:
+        return 1
+    else:
+        index = 1
+        while index <= num:
+            fact = fact * index
+            index += 1
+            results.append(fact)
+    return results[-1]
 
-    if n > 1:
-        compute_first(n)
+
+def accumulate(num):
+    fact = results[-1]
+    index = results.index(fact) + 2
+    while index <= num:
+        fact = fact * index
+        index += 1
+        results.append(fact)
+    return results[-1]
+
+
+def factorial(num):
+    global results
+
+    if not results:
+        return compute(num)
+
+    if num < len(results):
+        return results[num - 1]
+    elif num == len(results):
         return results[-1]
+    else:
+        return accumulate(num)
 
-    if n < len(results):
-        return results[n]
-
-    if n > len(results):
-        accumulate(n)
-        return results[-1]

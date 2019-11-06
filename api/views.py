@@ -2,6 +2,7 @@ from fastapi import APIRouter
 from app.fibonacci import fibonacci
 from app.ackermann import ackermann
 from app.factorial import factorial
+from fastapi import Query
 
 from api.models import Int
 
