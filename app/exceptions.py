@@ -4,13 +4,8 @@ class Error(Exception):
     pass
 
 
-class NegativeNumbersNotAllowed(Error):
-    """Raised when a negative number is passed to a method"""
+class ValidationError(Error):
+    """Base class for other exceptions"""
 
     pass
 
-
-class NumberExceedsTheMaximumLimit(Error):
-    """Raised when a number exceeds max allowed limit"""
-
-    pass

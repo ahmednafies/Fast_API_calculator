@@ -1,7 +1,18 @@
 from functools import lru_cache
-from app.exceptions import NegativeNumbersNotAllowed
+from app.exceptions import ValidationError
 
 results = []
+
+
+def validate(num):
+    if not isinstance(num, int):
+        raise TypeError("Only Integer Values are allowed")
+    if num < 0:
+        raise ValidationError("Negative numbers are not allowed")
+    if num > 10000:
+        # Try to compute factorial on google calculator with more than 170
+        # it will return undefined
+        raise ValidationError("Input exceed maximum allowed limit")
 
 
 def compute(fact, next_value, num):
@@ -14,10 +25,9 @@ def compute(fact, next_value, num):
 
 @lru_cache(100)
 def factorial(num):
-    if num < 0:
-        raise NegativeNumbersNotAllowed
+    validate(num)
 
-    elif num == 0:
+    if num == 0:
         return 1
 
     if not results:
