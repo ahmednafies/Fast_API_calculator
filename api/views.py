@@ -8,11 +8,6 @@ from api.models import Int
 api = APIRouter()
 
 
-@api.get("/")
-def root():
-    return {"Hello": "Klarna"}
-
-
 @api.get("/fibonacci/{n}", response_model=Int, status_code=200)
 def fibonacci_view(n: int):
     return {"result": fibonacci(n)}
