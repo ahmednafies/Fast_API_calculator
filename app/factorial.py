@@ -20,14 +20,15 @@ def compute(num):
 
 def accumulate(num):
     fact = results[-1]
-    index = results.index(fact) + 2
-    while index <= num:
-        fact = fact * index
-        index += 1
+    next_value = results.index(fact) + 2
+    while next_value <= num:
+        fact = fact * next_value
+        next_value += 1
         results.append(fact)
     return results[-1]
 
 
+@lru_cache(100)
 def factorial(num):
     global results
 
