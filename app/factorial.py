@@ -1,26 +1,10 @@
 from functools import lru_cache
+from app.exceptions import NegativeNumbersNotAllowed
 
 results = []
 
 
-def compute(num):
-    fact = 1
-    if num < 0:
-        return 1
-    elif num == 0:
-        return 1
-    else:
-        index = 1
-        while index <= num:
-            fact = fact * index
-            index += 1
-            results.append(fact)
-    return results[-1]
-
-
-def accumulate(num):
-    fact = results[-1]
-    next_value = results.index(fact) + 2
+def compute(fact, next_value, num):
     while next_value <= num:
         fact = fact * next_value
         next_value += 1
@@ -30,15 +14,21 @@ def accumulate(num):
 
 @lru_cache(100)
 def factorial(num):
-    global results
+    if num < 0:
+        raise NegativeNumbersNotAllowed
+
+    elif num == 0:
+        return 1
 
     if not results:
-        return compute(num)
+        return compute(1, 1, num)
 
     if num < len(results):
         return results[num - 1]
+
     elif num == len(results):
         return results[-1]
     else:
-        return accumulate(num)
-
+        fact = results[-1]
+        next_value = results.index(fact) + 2
+        return compute(fact, next_value, num)
