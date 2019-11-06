@@ -36,9 +36,10 @@ def factorial(num):
     if num < len(results):
         return results[num - 1]
 
-    elif num == len(results):
-        return results[-1]
-    else:
+    elif num > len(results):
         fact = results[-1]
         next_value = results.index(fact) + 2
         return compute(fact, next_value, num)
+
+    else:
+        return results[-1]
