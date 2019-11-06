@@ -1,21 +1,30 @@
 from fastapi import HTTPException
 
 
-def factorial_valid_input(n):
-    if not isinstance(n, int):
+def is_valid_input(number, min_val, max_val):
+    if not isinstance(number, int):
         raise HTTPException(
             status_code=400, detail="Input must be a positive integer"
         )
 
-    if n < 0:
+    if number < min_val:
         raise HTTPException(
             status_code=400, detail="negative numbers are not allowed"
         )
 
-    if n > 170:
+    if number > max_val:
         raise HTTPException(
             status_code=400,
-            detail="max factorial number input is 170, Swagger API is unable to view more than f(170)",
+            detail=f"max factorial number input is ({max_val}), Swagger API is unable to view more than f({max_val})",
         )
 
     return True
+
+
+def factorial_valid_input(number):
+    return is_valid_input(number, 0, 170)
+
+
+def fibonacci_valid_input(number):
+    return is_valid_input(number, 0, 2000)
+

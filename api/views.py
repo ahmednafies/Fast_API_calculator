@@ -2,7 +2,7 @@ from fastapi import APIRouter
 from app.fibonacci import fibonacci
 from app.ackermann import ackermann
 from app.factorial import factorial
-from api.validators import factorial_valid_input
+from api.validators import factorial_valid_input, fibonacci_valid_input
 from api.models import Int
 
 api = APIRouter()
@@ -10,7 +10,8 @@ api = APIRouter()
 
 @api.get("/fibonacci/{n}", response_model=Int, status_code=200)
 def fibonacci_view(n: int):
-    return {"result": fibonacci(n)}
+    if fibonacci_valid_input(n):
+        return {"result": fibonacci(n)}
 
 
 @api.get("/akermann/{m}&{n}", response_model=Int, status_code=200)

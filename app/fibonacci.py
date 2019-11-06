@@ -10,6 +10,7 @@ def compute_next(start, end) -> int:
         count += 1
 
 
+@lru_cache(100)
 def fibonacci(n) -> int:
     # TODO: raise negative numbers exceptions
     # TODO: add maximum number validation
