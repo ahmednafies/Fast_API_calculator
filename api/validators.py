@@ -22,9 +22,9 @@ def is_valid_input(number, min_val, max_val):
 
 
 def factorial_valid_input(number):
-    return is_valid_input(number, 0, 170)
+    return is_valid_input(number, 0, 2000)
 
 
 def fibonacci_valid_input(number):
-    return is_valid_input(number, 0, 2000)
+    return is_valid_input(number, 0, 20000)
 
