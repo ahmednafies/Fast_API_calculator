@@ -11,7 +11,7 @@ app.include_router(
 
 @app.get("/")
 def root():
-    return {"Hello": "Klarna"}
+    return {"Hello": "world"}
 
 
 if __name__ == "__main__":
