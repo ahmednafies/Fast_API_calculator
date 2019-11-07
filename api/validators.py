@@ -1,4 +1,5 @@
 from fastapi import HTTPException
+import config
 
 
 def is_valid_input(number, min_val, max_val):
@@ -15,16 +16,20 @@ def is_valid_input(number, min_val, max_val):
     if number > max_val:
         raise HTTPException(
             status_code=400,
-            detail=f"max factorial number input is ({max_val}), Swagger API is unable to view more than f({max_val})",
+            detail=f"max factorial number input is ({max_val})",
         )
 
     return True
 
 
 def factorial_valid_input(number):
-    return is_valid_input(number, 0, 2000)
+    return is_valid_input(
+        number, config.FACTORIAL_MIN_VALUE, config.FACTORIAL_MAX_VALUE
+    )
 
 
 def fibonacci_valid_input(number):
-    return is_valid_input(number, 0, 20000)
+    return is_valid_input(
+        number, config.FIBONACCI_MIN_VALUE, config.FIBONACCI_MAX_VALUE
+    )
 
