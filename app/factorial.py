@@ -1,21 +1,13 @@
 from functools import lru_cache
-from app.exceptions import ValidationError
+from app.validators import is_valid_number
+from app.utils import eval_time
+import config
 
 results = []
 
 
-def validate(num):
-    if not isinstance(num, int):
-        raise TypeError("Only Integer Values are allowed")
-    if num < 0:
-        raise ValidationError("Negative numbers are not allowed")
-    if num > 10000:
-        # Try to compute factorial on google calculator with more than 170
-        # it will return undefined
-        raise ValidationError("Input exceed maximum allowed limit")
-
-
 def compute(fact, next_value, num):
+
     while next_value <= num:
         fact = fact * next_value
         next_value += 1
@@ -23,9 +15,12 @@ def compute(fact, next_value, num):
     return results[-1]
 
 
+@eval_time
 @lru_cache(100)
 def factorial(num):
-    validate(num)
+    is_valid_number(
+        num, config.FACTORIAL_MIN_VALUE, config.FACTORIAL_MAX_VALUE
+    )
 
     if num == 0:
         return 1

@@ -1,4 +1,6 @@
 from functools import lru_cache
+from app.exceptions import ValidationError
+from app.utils import eval_time
 
 results = [0, 1]
 
@@ -10,13 +12,12 @@ def compute_next(start, end) -> int:
         count += 1
 
 
+@eval_time
 @lru_cache(100)
 def fibonacci(n) -> int:
-    # TODO: raise negative numbers exceptions
-    # TODO: add maximum number validation
-    # TODO: save last computation
+
     if n < 0:
-        print("Please enter a positive integer")
+        raise ValidationError("Negative numbers are not allowed")
 
     if n == 0 or n == 1:
         return n
