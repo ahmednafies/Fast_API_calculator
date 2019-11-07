@@ -2,6 +2,7 @@ from functools import lru_cache
 from app.validators import is_valid_number
 from app.utils import eval_time
 import config
+import math
 
 results = []
 
@@ -38,3 +39,8 @@ def factorial(num):
 
     else:
         return results[-1]
+
+
+@eval_time
+def python_factorial(n):
+    return math.factorial(n)
