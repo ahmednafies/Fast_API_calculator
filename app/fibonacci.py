@@ -23,9 +23,6 @@ def compute_next(num) -> int:
 def fibonacci(n) -> int:
     global last_num
 
-    if n < 0:
-        raise ValidationError("Negative numbers are not allowed")
-
     if n < last_num:
         return results[n]
 
