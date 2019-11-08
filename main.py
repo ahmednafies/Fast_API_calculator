@@ -1,12 +1,10 @@
 from fastapi import FastAPI
-from api import views
+from api.views import api
 import uvicorn
 
 app = FastAPI()
 
-app.include_router(
-    views.api, prefix="/api", responses={404: {"description": "Not found"}}
-)
+app.include_router(api, prefix="/api")
 
 
 @app.get("/")
