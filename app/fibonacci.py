@@ -6,35 +6,25 @@ results = {0: 0, 1: 1}
 last_num = 1
 
 
-def compute_next(start, end) -> int:
+def compute_next(num) -> int:
     global last_num
-    count = start
-    while count < end:
-        results.append(results[-2] + results[-1])
-        count += 1
+    while last_num < num:
+        results[last_num + 1] = results[last_num - 1] + results[last_num]
+        last_num += 1
 
 
 @eval_time
-@lru_cache(1000)
+@lru_cache(100)
 def fibonacci(n) -> int:
     global last_num
 
     if n < 0:
         raise ValidationError("Negative numbers are not allowed")
 
-    if n == 0 or n == 1:
-        return n
-
-    if len(results) == 2:
-        n = n - 1  # because we already have values in the results
-        compute_next(0, n)
-        return results[-1]
-
-    if n < len(results):
+    if n < last_num:
         return results[n]
 
-    if n > len(results):
-        compute_next(len(results), n + 1)
-        return results[-1]
+    if n > last_num:
+        compute_next(n)
 
-    return results[-1]
+    return results[last_num]
