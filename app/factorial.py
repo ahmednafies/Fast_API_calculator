@@ -4,16 +4,18 @@ from app.utils import eval_time
 import config
 import math
 
-results = []
+results = {}
+last_number = 1
 
 
-def compute(fact, next_value, num):
+def compute(fact, next_num, num):
+    while next_num <= num:
+        fact = fact * next_num
+        results[next_num] = fact
+        last_number = next_num
+        next_num += 1
 
-    while next_value <= num:
-        fact = fact * next_value
-        next_value += 1
-        results.append(fact)
-    return results[-1]
+    return results[last_number]
 
 
 @eval_time
@@ -30,15 +32,17 @@ def factorial(num):
         return compute(1, 1, num)
 
     if num < len(results):
-        return results[num - 1]
+        print(len(results))
+        print(last_number)
+        return results[num]
 
     elif num > len(results):
-        fact = results[-1]
-        next_value = results.index(fact) + 2
-        return compute(fact, next_value, num)
+        fact = results[last_number]
+        next_num = last_number + 1
+        return compute(fact, next_num, num)
 
     else:
-        return results[-1]
+        return results[last_number]
 
 
 @eval_time
