@@ -1,6 +1,7 @@
 from functools import lru_cache
 from app.exceptions import ValidationError
-from app.utils import eval_time
+from app.utils import eval_time, validate
+import config
 
 results = {0: 0, 1: 1}
 last_num = 1
@@ -8,13 +9,17 @@ last_num = 1
 
 def compute_next(num) -> int:
     global last_num
+
     while last_num < num:
-        results[last_num + 1] = results[last_num - 1] + results[last_num]
+        results[last_num + 1] = results[last_num] + results[last_num - 1]
         last_num += 1
 
 
 @eval_time
 @lru_cache(100)
+@validate(
+    min_val=config.FIBONACCI_MIN_VALUE, max_val=config.FIBONACCI_MAX_VALUE
+)
 def fibonacci(n) -> int:
     global last_num
 
