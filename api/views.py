@@ -1,8 +1,8 @@
-from fastapi import APIRouter
 from app.fibonacci import fibonacci
 from app.ackermann import ackermann
 from app.factorial import factorial
 from api.models import Response, FactorialModel, AckermannModel, FibonacciModel
+from fastapi import APIRouter
 
 api = APIRouter()
 
@@ -19,7 +19,7 @@ def ackermann_view(model: AckermannModel):
     return {"result": result, "time": time}
 
 
-@api.post("/factorial", response_model=Response, status_code=200)
+@api.post("/factorial/", response_model=Response, status_code=200)
 def factorial_view(model: FactorialModel):
     result, time = factorial(model.n)
     return {"result": result, "time": time}
