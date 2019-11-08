@@ -9,6 +9,8 @@ last_number = 1
 
 
 def compute(fact, next_num, num):
+    global last_number
+
     while next_num <= num:
         fact = fact * next_num
         results[next_num] = fact
@@ -19,8 +21,10 @@ def compute(fact, next_num, num):
 
 
 @eval_time
-@lru_cache(100)
+@lru_cache(1000)
 def factorial(num):
+    global last_number
+
     is_valid_number(
         num, config.FACTORIAL_MIN_VALUE, config.FACTORIAL_MAX_VALUE
     )
@@ -31,20 +35,13 @@ def factorial(num):
     if not results:
         return compute(1, 1, num)
 
-    if num < len(results):
-        print(len(results))
-        print(last_number)
+    if num < last_number:
         return results[num]
 
-    elif num > len(results):
+    elif num > last_number:
         fact = results[last_number]
         next_num = last_number + 1
         return compute(fact, next_num, num)
 
     else:
         return results[last_number]
-
-
-@eval_time
-def python_factorial(n):
-    return math.factorial(n)
