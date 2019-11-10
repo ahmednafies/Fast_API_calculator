@@ -1,0 +1,16 @@
+# .coveragerc to control py.test
+[run]
+branch = True
+omit =
+    main.py
+
+source = .
+
+[report]
+# Regexes for lines to exclude from consideration
+
+show_missing = True
+
+
+[html]
+directory = coverage_html_report

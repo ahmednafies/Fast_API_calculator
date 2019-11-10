@@ -15,10 +15,8 @@ def compute_next(num) -> int:
 
 
 @eval_time
-@lru_cache(100)
-@validate(
-    min_val=config.FIBONACCI_MIN_VALUE, max_val=config.FIBONACCI_MAX_VALUE
-)
+@lru_cache(500)
+@validate(max_val=config.FIBONACCI_MAX_VALUE)
 def fibonacci(n) -> int:
     global last_num
 

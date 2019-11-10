@@ -13,9 +13,7 @@ class FibonacciModel(BaseModel):
 
     @validator("n")
     def n_is_valid(cls, value):
-        is_valid_input(
-            "n", value, config.FIBONACCI_MIN_VALUE, config.FIBONACCI_MAX_VALUE
-        )
+        is_valid_input("n", value, config.FIBONACCI_MAX_VALUE)
         return value
 
 
@@ -30,10 +28,9 @@ class AckermannModel(BaseModel):
     @validator("values")
     def is_valid(cls, values):
         m, n = values.m, values.n
-        is_valid_input("m", m, config.ACKERMANN_M_MIN, config.ACKERMANN_M_MAX)
-        n_min_val = config.ACKERMANN_LIMITS["m"][m]["n"]["min"]
+        is_valid_input("m", m, config.ACKERMANN_M_MAX)
         n_max_val = config.ACKERMANN_LIMITS["m"][m]["n"]["max"]
-        is_valid_input("n", n, n_min_val, n_max_val)
+        is_valid_input("n", n, n_max_val)
         return values
 
 
@@ -42,7 +39,5 @@ class FactorialModel(BaseModel):
 
     @validator("n")
     def is_valid(cls, value):
-        is_valid_input(
-            "n", value, config.FACTORIAL_MIN_VALUE, config.FACTORIAL_MAX_VALUE
-        )
+        is_valid_input("n", value, config.FACTORIAL_MAX_VALUE)
         return value

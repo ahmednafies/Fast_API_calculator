@@ -18,9 +18,7 @@ def compute_next(num):
 
 @eval_time
 @lru_cache(500)
-@validate(
-    min_val=config.FACTORIAL_MIN_VALUE, max_val=config.FACTORIAL_MAX_VALUE
-)
+@validate(max_val=config.FACTORIAL_MAX_VALUE)
 def factorial(num):
     global last_num
     if num < last_num:

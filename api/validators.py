@@ -1,14 +1,14 @@
 from fastapi import HTTPException
 
 
-def is_valid_input(name, val, min_val, max_val):
+def is_valid_input(name, val, max_val):
     if not isinstance(val, int):
         raise HTTPException(
             status_code=422,
             detail=f"input must be a positive integer for '{name}'",
         )
 
-    if val < min_val:
+    if val < 0:
         raise HTTPException(
             status_code=422,
             detail=f"negative numbers are not allowed for '{name}'",

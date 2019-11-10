@@ -15,7 +15,7 @@ def test_fibonacci_with_valid_data():
 
 def test_fibonacci_with_invalid_data():
     with pytest.raises(HTTPException):
-        client.post("/fibonacci/", json={"n": config.FIBONACCI_MIN_VALUE - 1})
+        client.post("/fibonacci/", json={"n": -1})
 
     with pytest.raises(HTTPException):
         client.post("/fibonacci/", json={"n": config.FIBONACCI_MAX_VALUE + 1})

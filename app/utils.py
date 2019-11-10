@@ -14,21 +14,21 @@ def eval_time(func):
     return timed
 
 
-def is_valid_number(num, min_val, max_val):
+def is_valid_number(num, max_val):
     if not isinstance(num, int):
         raise TypeError("Only Integer Values are allowed")
-    if num < min_val:
+    if num < 0:
         raise ValidationError("Negative numbers are not allowed")
     if num > max_val:
         raise ValidationError("Input exceed maximum allowed limit")
 
 
-def validate(min_val=0, max_val=100):
+def validate(max_val=100):
     def decorator_validate(func):
         @functools.wraps(func)
         def wrapper_validate(*args, **kwargs):
             num = args[0]
-            is_valid_number(num, min_val, max_val)
+            is_valid_number(num, max_val)
             return func(*args, **kwargs)
 
         return wrapper_validate

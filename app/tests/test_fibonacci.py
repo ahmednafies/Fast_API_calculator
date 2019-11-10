@@ -2,7 +2,6 @@ from app.fibonacci import fibonacci
 from app.exceptions import ValidationError
 import pytest
 import config
-import math
 
 
 def fibonacci_sequence(n):
@@ -16,7 +15,7 @@ def fibonacci_sequence(n):
 
 def test_fibonacci_raises_exception_with_invalid_values():
     with pytest.raises(ValidationError):
-        fibonacci(config.FIBONACCI_MIN_VALUE - 1)
+        fibonacci(-1)
 
     with pytest.raises(ValidationError):
         fibonacci(config.FIBONACCI_MAX_VALUE + 1)
@@ -26,8 +25,9 @@ def test_fibonacci_raises_exception_with_invalid_values():
 
 
 def test_fibonacci_with_valid_data():
-    print(fibonacci_sequence(10))
     for index, value in enumerate(fibonacci_sequence(10)):
-        fact, _ = fibonacci(index)
-        assert fact == value
+        fib, _ = fibonacci(index)
+        assert fib == value
 
+    fib, _ = fibonacci(15)
+    fib = fibonacci_sequence(15)[-1]

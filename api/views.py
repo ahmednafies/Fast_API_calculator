@@ -14,7 +14,7 @@ def fibonacci_view(model: FibonacciModel):
     return {"result": result, "time": time}
 
 
-@api.post("/akermann/", response_model=Response, status_code=200)
+@api.post("/ackermann/", response_model=Response, status_code=200)
 def ackermann_view(model: AckermannModel):
     result, time = ackermann(model.values.m, model.values.n)
     return {"result": result, "time": time}

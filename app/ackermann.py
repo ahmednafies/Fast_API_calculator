@@ -35,9 +35,8 @@ def compute(m, n):
 
 @eval_time
 @lru_cache(500)
-@validate(config.ACKERMANN_M_MIN, config.ACKERMANN_M_MAX)
+@validate(config.ACKERMANN_M_MAX)
 def ackermann(m, n):
-    n_min_val = config.ACKERMANN_LIMITS["m"][m]["n"]["min"]
     n_max_val = config.ACKERMANN_LIMITS["m"][m]["n"]["max"]
-    is_valid_number(n, n_min_val, n_max_val)
+    is_valid_number(n, n_max_val)
     return compute(m, n)

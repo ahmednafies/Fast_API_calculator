@@ -9,7 +9,7 @@ factorial_sequence = [math.factorial(num) for num in range(10)]
 
 def test_factorial_raises_exception_with_invalid_values():
     with pytest.raises(ValidationError):
-        factorial(config.FACTORIAL_MIN_VALUE - 1)
+        factorial(-1)
 
     with pytest.raises(ValidationError):
         factorial(config.FACTORIAL_MAX_VALUE + 1)
@@ -23,3 +23,5 @@ def test_factorial_with_valid_data():
         fact, _ = factorial(index)
         assert fact == value
 
+    fact, _ = factorial(15)
+    assert fact == math.factorial(15)

@@ -17,7 +17,7 @@ def test_factorial_with_valid_data():
 
 def test_factorial_with_invalid_data():
     with pytest.raises(HTTPException):
-        client.post(endpoint, json={"n": config.FACTORIAL_MIN_VALUE - 1})
+        client.post(endpoint, json={"n": -1})
 
     with pytest.raises(HTTPException):
         client.post(endpoint, json={"n": config.FACTORIAL_MAX_VALUE + 1})
