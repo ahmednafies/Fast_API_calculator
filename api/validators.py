@@ -21,4 +21,3 @@ def is_valid_input(name, val, max_val):
         )
 
     return True
-

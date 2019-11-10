@@ -8,4 +8,3 @@ class ValidationError(Error):
     """Base class for other exceptions"""
 
     pass
-
