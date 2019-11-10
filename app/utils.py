@@ -1,6 +1,6 @@
 import time
 import functools
-from app.validators import is_valid_number
+from app.exceptions import ValidationError
 
 
 def eval_time(func):
@@ -12,6 +12,15 @@ def eval_time(func):
         return result, total_time
 
     return timed
+
+
+def is_valid_number(num, min_val, max_val):
+    if not isinstance(num, int):
+        raise TypeError("Only Integer Values are allowed")
+    if num < min_val:
+        raise ValidationError("Negative numbers are not allowed")
+    if num > max_val:
+        raise ValidationError("Input exceed maximum allowed limit")
 
 
 def validate(min_val=0, max_val=100):
