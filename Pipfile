@@ -9,15 +9,13 @@ flake8 = "*"
 ipython = "*"
 
 [packages]
-fastapi = "*"
-uvicorn = "*"
-pydantic = "*"
-pymemcache = "*"
-redis = "*"
-pytest = "*"
-starlette = "*"
-requests = "*"
-pytest-cov = "*"
+fastapi = "==0.42.0"
+uvicorn = "==0.10.4"
+pydantic = "==0.32.2"
+requests = "==2.22.0"
+starlette = "==0.12.9"
+pytest = "==5.2.2"
+pytest-cov = "==2.8.1"
 
 [requires]
 python_version = "3.7"
