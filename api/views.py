@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+"""API Views Module
+
+This module contains handels all endpoints requests and responses.
+"""
+
 from fastapi import APIRouter
 
 from api.models import AckermannModel, FactorialModel, FibonacciModel, Response
