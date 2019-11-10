@@ -2,7 +2,7 @@ from functools import lru_cache
 from app.utils import eval_time
 import config
 from app.utils import validate
-from app.validators import is_valid_number
+from app.utils import is_valid_number
 
 
 def knuth_to_power(n):
@@ -34,11 +34,10 @@ def compute(m, n):
 
 
 @eval_time
-@lru_cache(100)
+@lru_cache(500)
 @validate(config.ACKERMANN_M_MIN, config.ACKERMANN_M_MAX)
 def ackermann(m, n):
     n_min_val = config.ACKERMANN_LIMITS["m"][m]["n"]["min"]
     n_max_val = config.ACKERMANN_LIMITS["m"][m]["n"]["max"]
     is_valid_number(n, n_min_val, n_max_val)
-    result = compute(m, n)
-    return result
+    return compute(m, n)
