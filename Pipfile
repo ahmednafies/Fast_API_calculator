@@ -17,6 +17,7 @@ redis = "*"
 pytest = "*"
 starlette = "*"
 requests = "*"
+pytest-cov = "*"
 
 [requires]
 python_version = "3.7"
