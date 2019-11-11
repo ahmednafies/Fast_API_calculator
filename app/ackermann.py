@@ -48,9 +48,12 @@ def knuth_to_value(n):
     return 2 ** result
 
 
-def compute(m, n):
-    """Function computes Ackermann (m,n).
-    
+@eval_time
+@lru_cache(500)
+@validate(config.ACKERMANN_M_MAX)
+def ackermann(m: int, n: int) -> int:
+    """Function handels the validation and computation of Ackermann (m,n).  
+
     Function computes results of Ackermann (m,n) where 0 <= m <= 5.
     Implementing recurssion was quite expensive which is why this function
     has changed to compute Ackermann(m,n) in much simpler manner.
@@ -66,7 +69,6 @@ def compute(m, n):
         here we are only computing the 1st value
         - m = 5 and  n = 0 , A(4,1) = (2 ** knuth_to_value(1)) - 3
 
-
     Args:
         m (int): Ackerman function first argument.
         n (int): Ackerman function second argument.
@@ -74,6 +76,10 @@ def compute(m, n):
     Returns:
         int: result of Ackermann(m,n)
     """
+    n_max_val = config.ACKERMANN_LIMITS["m"][m]["n"]["max"]
+
+    is_valid_number(n, n_max_val)
+
     if m == 0:
         return n + 1
 
@@ -89,23 +95,5 @@ def compute(m, n):
     if m == 4:
         return knuth_to_value(n + 1) - 3
 
-    if m == 5:
+    if m == 5 and n == 0:
         return knuth_to_value(2) - 3
-
-
-@eval_time
-@lru_cache(500)
-@validate(config.ACKERMANN_M_MAX)
-def ackermann(m, n):
-    """Function handels the validation and computation of Ackermann (m,n).  
-
-    Args:
-        m (int): Ackerman function first argument.
-        n (int): Ackerman function second argument.
-    
-    Returns:
-        int: result of Ackermann(m,n)
-    """
-    n_max_val = config.ACKERMANN_LIMITS["m"][m]["n"]["max"]
-    is_valid_number(n, n_max_val)
-    return compute(m, n)
