@@ -1,3 +1,7 @@
+"""Config Module
+
+This module contains application global configuration.
+"""
 FACTORIAL_MAX_VALUE: int = 20000
 FIBONACCI_MAX_VALUE: int = 2000
 ACKERMANN_LIMITS: dict = {
