@@ -42,6 +42,6 @@ ehthumbs.db
 __Pycache__
 
 ######################
-celerybeat-schedule
-celerybeat.pid
+
 .coverage
+.pytest_cache
