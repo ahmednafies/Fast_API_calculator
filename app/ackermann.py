@@ -3,8 +3,8 @@
 
 This module contains all functionality required to calculate Ackermann(m,n)
 
- Ackermann function is total computable function that is not primitive recursive (cannot be converted to loops).
- However, we can compute it in a smarter way for values of m <= 4.
+Ackermann function is total computable function that is not primitive recursive (cannot be converted to loops).
+However, we can compute it in a smarter way for values of m <= 4.
 
     Ackermann(0, n) = n + 1
     Ackermann(1, n) = n + 2
@@ -17,6 +17,9 @@ This module contains all functionality required to calculate Ackermann(m,n)
         knuth_to_value(0) = 2 ** 2
         knuth_to_value(1) = 2 ** (2 ** 2)
         knuth_to_value(2) = 2 ** (2 ** (2 ** 2)
+
+    Here I cheated a bit for Ackermann(5,0), since Ackermann(5,0) == Ackermann(4,1)
+    
 """
 from functools import lru_cache
 
