@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+"""Fibonacci Endpoint Tests Module.
+"""
 from starlette.testclient import TestClient
 from api.views import api
 from fastapi.exceptions import HTTPException, RequestValidationError

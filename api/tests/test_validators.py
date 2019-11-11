@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+"""API Validators Endpoint Tests Module.
+"""
 from fastapi.exceptions import HTTPException
 import pytest
 from api.validators import is_valid_input
