@@ -1,4 +1,4 @@
-from fastapi.exceptions import HTTPException, RequestValidationError
+from fastapi.exceptions import HTTPException
 import pytest
 from api.validators import is_valid_input
 
