@@ -3,6 +3,20 @@
 
 This module contains all functionality required to calculate Ackermann(m,n)
 
+ Ackermann function is total computable function that is not primitive recursive (cannot be converted to loops).
+ However, we can compute it in a smarter way for values of m <= 4.
+
+    Ackermann(0, n) = n + 1
+    Ackermann(1, n) = n + 2
+    Ackermann(2, n) = 2 * n + 3
+    Ackermann(3, n) = 2 ** (n + 3) - 3
+    Ackermann(4, n) = (knuth_to_value(n)) - 3
+
+    where knuth_to_value(n) computes powers of powers of 2
+    example:
+        knuth_to_value(0) = 2 ** 2
+        knuth_to_value(1) = 2 ** (2 ** 2)
+        knuth_to_value(2) = 2 ** (2 ** (2 ** 2)
 """
 from functools import lru_cache
 
@@ -10,12 +24,12 @@ import config
 from app.utils import eval_time, is_valid_number, validate
 
 
-def knuth_to_power(n):
+def knuth_to_value(n):
     """Function handels computing powers of powers of 2.
     example:
-        knuth_to_power(0) = 2 ** 2
-        knuth_to_power(1) = 2 ** (2 ** 2)
-        knuth_to_power(2) = 2 ** (2 ** (2 ** 2)
+        knuth_to_value(0) = 2 ** 2
+        knuth_to_value(1) = 2 ** (2 ** 2)
+        knuth_to_value(2) = 2 ** (2 ** (2 ** 2)
             ...
 
     Args:
@@ -25,10 +39,10 @@ def knuth_to_power(n):
         int: computed value
     """
     result = 2
-    while n >= 0:
+    while n > 0:
         result = result ** 2
         n -= 1
-    return result
+    return 2 ** result
 
 
 def compute(m, n):
@@ -44,10 +58,10 @@ def compute(m, n):
         - m = 1 and  n => 0 , A(m,n) = n + 2
         - m = 2 and  n => 0 , A(m,n) = 2 * n + 3
         - m = 3 and  n => 0 , A(m,n) = 2 ** (n + 3) - 3
-        - m = 4 and  n => 0 , A(m,n) = (2 ** knuth_to_power(n)) - 3
+        - m = 4 and  n => 0 , A(m,n) = (2 ** knuth_to_value(n)) - 3
 
         here we are only computing the 1st value
-        - m = 5 and  n = 0 , A(4,1) = (2 ** knuth_to_power(1)) - 3
+        - m = 5 and  n = 0 , A(4,1) = (2 ** knuth_to_value(1)) - 3
 
 
     Args:
@@ -70,10 +84,10 @@ def compute(m, n):
         return 2 ** (n + 3) - 3
 
     if m == 4:
-        return (2 ** knuth_to_power(n)) - 3
+        return knuth_to_value(n + 1) - 3
 
     if m == 5:
-        return (2 ** knuth_to_power(1)) - 3
+        return knuth_to_value(2) - 3
 
 
 @eval_time
