@@ -24,7 +24,7 @@ server will be running on [localhost:8000](http://localhost:8000)
 make sure that `pipenv` is installed
 
 Install dependencies
-```shs
+```sh
 $ pipenv install
 ```
 
@@ -75,7 +75,7 @@ $ pipenv run pytest --cov
 
 ### Monitoring
 For now I am just returning the time taken to execute the function,
-but the problem is we don't know if for example it is faster or slower than before because
+but the problem is we don't know if for example if it is faster or slower than before because
 we are not storing this data anywhere.
 
 - I think is better to use APM (Application performance monitoring) with ELK (Elasticsearch, Logstash and Kibana)
