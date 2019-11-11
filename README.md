@@ -10,15 +10,6 @@ This micro service handles the following:
 
 [Fast API](https://fastapi.tiangolo.com/) - one the fastest python framework according to [techempower.com](https://www.techempower.com/benchmarks/#section=data-r18&hw=ph&test=db&l=zijzen-f) web framework benchmark 
 
-### 1.Fibonacci
-
-
-### 2.Factorial
-
-
-### 3.Ackermann
-
-
 ### Build and run using docker
 
 ```sh
@@ -37,6 +28,12 @@ $ pipenv install
 run
 ```sh
 $ pipenv run python main.py
+```
+
+or run using uvicorn
+
+```sh
+$ pipenv run uvicorn main:app
 ```
 Or if you're developing in vscode you can just press `F5` to run the server
 
