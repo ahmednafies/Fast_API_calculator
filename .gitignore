@@ -40,7 +40,7 @@
 .Trashes
 ehthumbs.db
 __Pycache__
-
+*.pyc
 ######################
 
 .coverage
