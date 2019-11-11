@@ -6,6 +6,8 @@ This micro-service handles the following:
 * The Ackermann function A(m,n) with values of m and n provided by the user.
 * The factorial of a non-negative integer n provided by the user.
 
+![flow chart](./flowchart.jpg)
+
 ### Built with
 
 [Fast API](https://fastapi.tiangolo.com/) - one the fastest python frameworks according to [techempower.com](https://www.techempower.com/benchmarks/#section=data-r18&hw=ph&test=db&l=zijzen-f) web framework benchmark.
