@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """API Models Module
 
-This Module contains the models used for serializing data 
+This Module contains the models used for serializing data
 and populating Open API documentation for all of the endpoints.
 Moreover payload validations happen in this module
 
@@ -54,7 +54,7 @@ class AckermannModel(BaseModel):
     The reason that values are handeld in 'AckermannValues'
     is that pydantic can only validate one value at a time.
 
-    However in this can, both values need to be validated together
+    However, both values need to be validated together
     for example, if 'm = 4' then 'n' can be '0 < n < 4'
     yet for 'm = 5', 'n' can only be equal to '0'
 
