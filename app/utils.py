@@ -27,7 +27,7 @@ def eval_time(func):
     return timed
 
 
-def is_valid_number(num, max_val: int):
+def is_valid_number(num, max_val: int) -> bool:
     """Function validate a number. 
     
     Args:
@@ -46,8 +46,10 @@ def is_valid_number(num, max_val: int):
     if num > max_val:
         raise ValidationError("Input exceed maximum allowed limit")
 
+    return True
 
-def validate(max_val=100):
+
+def validate(max_val: int = 100):
     """Decorator function validated the 1st argument of decorated function
     
     Args:
