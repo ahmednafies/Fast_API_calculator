@@ -112,3 +112,10 @@ In fact I think that there are tons of corner cases that are not covered by my t
 I have recently read about mutation testing and in fact there is a couple of 
 good packages available `cosmic ray`, `mutmut` and `mutpy`.
 I am thinking about trying `mutmut` to be honest.
+
+
+### Thank you note 
+I know README is not the place for this
+This has been one of the best code assignments I have ever got,
+looks simple at the first sight but optimizing code is a fun challenge.
+So Kudos to you guys.
