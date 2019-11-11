@@ -6,22 +6,25 @@ This micro service handles the following:
 * The Ackermann function A(m,n) with values of m and n provided by the user.
 * The factorial of a non-negative integer n provided by the user.
 
-## Built with
+### Built with
 
-[Fast API](https://fastapi.tiangolo.com/) - one the fastest python framework according to [techempower.com](https://www.techempower.com/benchmarks/#section=data-r18&hw=ph&test=db&l=zijzen-f) web framework benchmark 
+[Fast API](https://fastapi.tiangolo.com/) - one the fastest python frameworks according to [techempower.com](https://www.techempower.com/benchmarks/#section=data-r18&hw=ph&test=db&l=zijzen-f) web framework benchmark 
 
-### Build and run using docker
+## Install & Run
+
+### using docker
 
 ```sh
 $ docker-compose up --build
 ```
+server will be running on [localhost:8000](http://localhost:8000)
 
-### Build and run without docker
+### without docker
 
 make sure that `pipenv` is installed
 
 Install dependencies
-```sh
+```shs
 $ pipenv install
 ```
 
@@ -36,6 +39,10 @@ or run using uvicorn
 $ pipenv run uvicorn main:app
 ```
 Or if you're developing in vscode you can just press `F5` to run the server
+
+server will be running on [localhost:8000](http://localhost:8000)
+
+## Tests
 
 ### Running tests with docker
 
@@ -58,3 +65,33 @@ run with coverage
 ```sh
 $ pipenv run pytest --cov
 ```
+
+### API documentation
+
+* /docs - Open-API 3.0 (Swagger) documentation
+* /redoc - Redoc documentation
+
+## Future Improvements
+
+### Factorial and Fibonacci
+* storing values in an in-memory db like memcached or redis instead of global variables
+
+
+### Monitoring
+* For now I am just returning the time taken to excute the function,
+but the problem is we dont know if for example it is faster or slower than before because
+we are not storing this data anywhere.
+
+I think is better to use APM (Application performance monitoring) with ELK (Elasticsearch, Logstash and Kibana)
+- There is a lot of docker images which contain ELK with APM server, however, I would need to write my own client though since clients only exist for Django and Flask.
+_ I am not sure if I can make it pre configured, so that when someone would clone
+
+- Maybe it would be easier to just use InfluxDB (time series database) with Grafana to display results. 
+
+### CI/CD
+I was not sure I was allowed to push to github, however, I would have used CircleCI
+and lets say we deploy to Heroku, I would have used heroku for continuous deployment.
+
+### Code documentation
+I would sphinx to generate code documentation and use readthedocs.
+I think i have seen somewhere readthedocs docker image so that it can be used locally.
