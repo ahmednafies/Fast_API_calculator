@@ -38,19 +38,6 @@ results = {0: 0, 1: 1}
 last_num = 1
 
 
-def compute_next(num: int):
-    """Function computes the next Fibonacci number from previous values
-    
-    Args:
-        num (int): num -> fibonacci(num)
-    """
-    global last_num
-
-    while last_num < num:
-        results[last_num + 1] = results[last_num] + results[last_num - 1]
-        last_num += 1
-
-
 @eval_time
 @lru_cache(500)
 @validate(max_val=config.FIBONACCI_MAX_VALUE)
@@ -69,6 +56,8 @@ def fibonacci(num: int) -> int:
         return results[num]
 
     if num > last_num:
-        compute_next(num)
+        while last_num < num:
+            results[last_num + 1] = results[last_num] + results[last_num - 1]
+            last_num += 1
 
     return results[last_num]

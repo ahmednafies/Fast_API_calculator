@@ -37,21 +37,6 @@ results = {0: 1, 1: 1}
 last_num = 1
 
 
-def compute_next(num: int):
-    """Function computes the next factorial until it reaches the required one.
-    
-    Args:
-        num (int): num -> factorial(num) 
-    """
-    global last_num
-
-    while last_num < num:
-        next_num = last_num + 1
-        fact = next_num * results[last_num]
-        results[next_num] = fact
-        last_num += 1
-
-
 @eval_time
 @lru_cache(500)
 @validate(max_val=config.FACTORIAL_MAX_VALUE)
@@ -69,6 +54,10 @@ def factorial(num: int) -> int:
         return results[num]
 
     if num > last_num:
-        compute_next(num)
+        while last_num < num:
+            next_num = last_num + 1
+            fact = next_num * results[last_num]
+            results[next_num] = fact
+            last_num += 1
 
     return results[last_num]
