@@ -73,10 +73,6 @@ $ pipenv run pytest --cov
 
 ## Future Improvements
 
-### Factorial and Fibonacci
-* storing values in an in-memory db like memcached or redis instead of global variables
-
-
 ### Monitoring
 For now I am just returning the time taken to execute the function,
 but the problem is we don't know if for example it is faster or slower than before because
