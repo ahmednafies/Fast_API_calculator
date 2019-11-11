@@ -84,14 +84,30 @@ we are not storing this data anywhere.
 
 I think is better to use APM (Application performance monitoring) with ELK (Elasticsearch, Logstash and Kibana)
 - There is a lot of docker images which contain ELK with APM server, however, I would need to write my own client though since clients only exist for Django and Flask.
-_ I am not sure if I can make it pre configured, so that when someone would clone
+_ I am not sure if I can make it pre configured, so that when someone would clone my repo, he does not need to 
+configure APM himself.
+- It felt as if ELK and APM is a bit to much for just monitoring this app (it is like trying to hammer a nail with a bazooka)
 
 - Maybe it would be easier to just use InfluxDB (time series database) with Grafana to display results. 
+and it would be great if it can be pre-configured as well.
 
 ### CI/CD
 I was not sure I was allowed to push to github, however, I would have used CircleCI
 and lets say we deploy to Heroku, I would have used heroku for continuous deployment.
 
 ### Code documentation
-I would sphinx to generate code documentation and use readthedocs.
+I would use sphinx to generate code documentation and use readthedocs.
 I think i have seen somewhere readthedocs docker image so that it can be used locally.
+
+
+### Server
+
+Using nginx as a reverse proxy.
+FastAPI supports asynchronicity, so probably it is a good option to make this app fully Async.
+
+### testing
+Now I have 99% test coverage, AMAZING RIGHT? no it is not.
+In fact I think that there are tons of corner cases that are not my tests.
+I have recently read about mutation testing and in fact there is a couple of 
+good packages available `cosmic ray`, `mutmut` and `mutpy`.
+I am think about `mutmut` to be honest
