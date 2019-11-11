@@ -8,7 +8,7 @@ This micro-service handles the following:
 
 ### Built with
 
-[Fast API](https://fastapi.tiangolo.com/) - one the fastest python frameworks according to [techempower.com](https://www.techempower.com/benchmarks/#section=data-r18&hw=ph&test=db&l=zijzen-f) web framework benchmark 
+[Fast API](https://fastapi.tiangolo.com/) - one the fastest python frameworks according to [techempower.com](https://www.techempower.com/benchmarks/#section=data-r18&hw=ph&test=db&l=zijzen-f) web framework benchmark.
 
 ## Install & Run
 
@@ -71,6 +71,11 @@ $ pipenv run pytest --cov
 * /docs - Open-API 3.0 (Swagger) documentation
 * /redoc - Redoc documentation
 
+### Hint:
+
+Swagger is unable to view large numbers, and thus it shows null instead
+e.g Ackermann(4,3), if that is the case, postman is recommended
+
 ## Future Improvements
 
 ### Monitoring
@@ -113,5 +118,6 @@ I am thinking about trying `mutmut`.
 ### Thank you note 
 I know README is not the place for this
 This has been one of the best code assignments I have ever got,
-looks simple at the first sight but optimizing code is a fun challenge.
+looks simple at the first sight but optimizing code is quite a challenge and super fun.
+As well, it was my first time trying `Fastapi` and `pydantic`.
 So kudos to you guys.
