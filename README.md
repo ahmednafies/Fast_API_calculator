@@ -107,15 +107,15 @@ Using nginx as a reverse proxy.
 FastAPI supports asynchronicity, so probably it is a good option to take advantage of that
 
 ### Testing
-Now I have 99% test coverage, AMAZING RIGHT? no it is not.
+Now we have 99% test coverage, AMAZING RIGHT? no it is not.
 In fact I think that there are tons of corner cases that are not covered by my tests.
 I have recently read about mutation testing and in fact there is a couple of 
 good packages available `cosmic ray`, `mutmut` and `mutpy`.
-I am thinking about trying `mutmut` to be honest.
+I am thinking about trying `mutmut`.
 
 
 ### Thank you note 
 I know README is not the place for this
 This has been one of the best code assignments I have ever got,
 looks simple at the first sight but optimizing code is a fun challenge.
-So Kudos to you guys.
+So kudos to you guys.
