@@ -1,5 +1,5 @@
 
-# Assignment (Ahmed Nafies)
+# FAST API Calculator
 
 This micro-service handles the following:
 * Calculating a Fibonacci number F(n) with the value of n provided by the user.
