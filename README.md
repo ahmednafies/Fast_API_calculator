@@ -81,29 +81,13 @@ e.g Ackermann(4,3), if that is the case, postman is recommended
 ## Future Improvements
 
 ### Monitoring
-For now I am just returning the time taken to execute the function,
-but the problem is we don't know if for example if it is faster or slower than before because
-we are not storing this data anywhere.
-
-- I think is better to use APM (Application performance monitoring) with ELK (Elasticsearch, Logstash and Kibana)
-There is a lot of docker images which contain ELK with APM server, however, I would need to write my own client though since clients only exist for Django and Flask.
-
-- I am not sure if I can make it pre configured, so that when someone would clone my repo, he does not need to 
-configure APM himself.
-
-- It felt as if ELK and APM is a bit to much for just monitoring this app (it is like trying to hammer a nail with a bazooka)
-
-- Maybe it would be easier to just use InfluxDB (time series database) with Grafana to display results. 
-and it would be great if it can be pre-configured as well.
+APM (Application performance monitoring) with ELK (Elasticsearch, Logstash and Kibana)
 
 ### CI/CD
-I was not sure I was allowed to push to github, however, I would have used CircleCI
-and lets say we deploy to Heroku, I would have used heroku for continuous deployment.
+CircleCI
 
 ### Code documentation
-I would use sphinx to generate code documentation and use readthedocs.
-I think i have seen somewhere readthedocs docker image so that it can be used locally.
-
+sphinx to generate code documentation and use readthedocs.
 
 ### Server
 Using nginx as a reverse proxy.
@@ -111,15 +95,5 @@ FastAPI supports asynchronicity, so probably it is a good option to take advanta
 
 ### Testing
 Now we have 99% test coverage, AMAZING RIGHT? no it is not.
-In fact I think that there are tons of corner cases that are not covered by my tests.
-I have recently read about mutation testing and in fact there is a couple of 
-good packages available `cosmic ray`, `mutmut` and `mutpy`.
-I am thinking about trying `mutmut`.
+Mutation testing is recommended here
 
-
-### Thank you note 
-I know README is not the place for this
-This has been one of the best code assignments I have ever got,
-looks simple at the first sight but optimizing code is quite a challenge and super fun.
-As well, it was my first time trying `Fastapi` and `pydantic`.
-So kudos to you guys.
