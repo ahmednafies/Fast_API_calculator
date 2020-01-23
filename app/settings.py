@@ -21,11 +21,11 @@ class Test(Base):
 
 
 class Staging(Base):
-    pass
+    ALLOWED_HOSTS = ["fast-api-calculator-staging.herokuapp.com"]
 
 
 class Prod(Base):
-    pass
+    ALLOWED_HOSTS = ["fast-api-calculator.herokuapp.com"]
 
 
 def get_config() -> Base:
