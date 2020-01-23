@@ -6,7 +6,7 @@ This micro-service handles the following:
 * The Ackermann function A(m,n) with values of m and n provided by the user.
 * The factorial of a non-negative integer n provided by the user.
 
-![flow chart](./flowchart.jpg)
+![flow chart](static/flowchart.jpg)
 
 ### Built with
 
