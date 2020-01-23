@@ -1,6 +1,5 @@
 from fastapi import FastAPI
 from api.views import api
-import uvicorn
 from app import CONFIG
 from starlette.templating import Jinja2Templates
 from starlette.staticfiles import StaticFiles
@@ -26,6 +25,3 @@ def index(request: Request):
         {"request": request, "index_content": markdown(content)},
     )
 
-
-if __name__ == "__main__":
-    uvicorn.run(app, host="127.0.0.1", port=8000, reload=True)
